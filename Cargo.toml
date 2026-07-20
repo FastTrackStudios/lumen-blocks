@@ -11,8 +11,8 @@ mdbook-gen = { git = "https://github.com/DioxusLabs/docsite.git", rev = "029a529
 syn = "2.0.98"
 tracing = { version = "0.1", features = ["std"] }
 docs = { path = "./docsite/docs" }
-dioxus-sdk-time = { git = "https://github.com/FastTrackStudios/sdk", branch = "dioxus-0.8" }
-lucide-dioxus = { git = "https://github.com/FastTrackStudios/lucide", branch = "dioxus-0.8" }
+dioxus-sdk-time = { git = "https://github.com/FastTrackStudios/sdk", branch = "main" }
+lucide-dioxus = { git = "https://github.com/FastTrackStudios/lucide", branch = "main" }
 
 [profile]
 
