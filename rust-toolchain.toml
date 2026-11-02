@@ -1,0 +1,7 @@
+# The FastTrackStudios fleet pin (architect v0.10.0 uses the same). The
+# dioxus-primitives tag `fts-upstream-2026-11` needs 1.99: its `attributes!`
+# macro extends a Vec with a boxed array, which older compilers reject.
+[toolchain]
+channel = "1.99.1"
+components = ["rustfmt", "clippy"]
+targets = ["wasm32-unknown-unknown"]

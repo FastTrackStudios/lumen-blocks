@@ -18,7 +18,7 @@ pub mod basic {
 
     #[component]
     pub fn BasicInputExample() -> Element {
-        let mut value = use_signal(|| String::new());
+        let mut value = use_signal(String::new);
 
         rsx! {
             div { class: "w-full max-w-md",
@@ -302,7 +302,7 @@ pub mod validation {
 
     #[component]
     pub fn FormValidationExample() -> Element {
-        let mut email = use_signal(|| String::new());
+        let mut email = use_signal(String::new);
         let mut has_error = use_signal(|| false);
 
         let validate_email = move |evt: FormEvent| {
@@ -352,8 +352,8 @@ pub mod complete {
 
     #[component]
     pub fn CompleteFormExample() -> Element {
-        let mut email = use_signal(|| String::new());
-        let mut password = use_signal(|| String::new());
+        let mut email = use_signal(String::new);
+        let mut password = use_signal(String::new);
         let mut has_error = use_signal(|| false);
         let mut submitted = use_signal(|| false);
 
@@ -369,9 +369,7 @@ pub mod complete {
         };
 
         let handle_submit = move |_| {
-            if email().is_empty() || !email().contains('@') {
-                has_error.set(true);
-            } else if password().len() < 6 {
+            if email().is_empty() || !email().contains('@') || password().len() < 6 {
                 has_error.set(true);
             } else {
                 has_error.set(false);
@@ -396,7 +394,7 @@ pub mod complete {
                             input_type: "email".to_string(),
                             placeholder: "Enter your email".to_string(),
                             full_width: true,
-                            variant: if has_error() && email().is_empty() || (email().len() > 0 && !email().contains('@')) {
+                            variant: if has_error() && email().is_empty() || (!email().is_empty() && !email().contains('@')) {
                                 InputVariant::Error
                             } else {
                                 InputVariant::Default
@@ -412,7 +410,7 @@ pub mod complete {
                                 CircleAlert { size: 14, class: "mr-1 text-destructive" }
                                 "Email is required"
                             }
-                        } else if has_error() && email().len() > 0 && !email().contains('@') {
+                        } else if has_error() && !email().is_empty() && !email().contains('@') {
                             div {
                                 class: "text-destructive text-xs flex items-center mt-1",
                                 CircleAlert { size: 14, class: "mr-1 text-destructive" }

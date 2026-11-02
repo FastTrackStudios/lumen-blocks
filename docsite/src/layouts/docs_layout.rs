@@ -46,7 +46,7 @@ pub fn DocsLayout() -> Element {
         }
 
         // Search all chapters for the title
-        let chapters = vec![
+        let chapters = [
             &book.summary.prefix_chapters,
             &book.summary.numbered_chapters,
             &book.summary.suffix_chapters,
