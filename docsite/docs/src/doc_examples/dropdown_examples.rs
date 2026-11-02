@@ -17,7 +17,7 @@ pub mod basic {
 
     #[component]
     pub fn BasicDropdownExample() -> Element {
-        let mut selected_action = use_signal(|| String::new());
+        let mut selected_action = use_signal(String::new);
 
         rsx! {
             div { class: "flex flex-col gap-4",
@@ -226,7 +226,7 @@ pub mod icons {
 
     #[component]
     pub fn DropdownWithIconsExample() -> Element {
-        let mut selected_action = use_signal(|| String::new());
+        let mut selected_action = use_signal(String::new);
 
         rsx! {
             div { class: "flex flex-col gap-4",
@@ -326,8 +326,8 @@ pub mod alignment {
 
     #[component]
     pub fn DropdownAlignmentExample() -> Element {
-        let mut selected_item = use_signal(|| String::new());
-        let mut selected_alignment = use_signal(|| String::new());
+        let mut selected_item = use_signal(String::new);
+        let mut selected_alignment = use_signal(String::new);
 
         rsx! {
             div { class: "flex flex-col gap-4 mb-4",
@@ -588,8 +588,8 @@ pub mod complex {
 
     #[component]
     pub fn ComplexDropdownExample() -> Element {
-        let mut selected_section = use_signal(|| String::new());
-        let mut selected_action = use_signal(|| String::new());
+        let mut selected_section = use_signal(String::new);
+        let mut selected_action = use_signal(String::new);
 
         rsx! {
             div { class: "flex flex-col gap-4",

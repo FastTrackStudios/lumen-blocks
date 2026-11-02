@@ -1,3 +1,8 @@
+// The `Routable` derive on `Route` initialises the `child` field redundantly
+// in code it generates outside the enum, with the field's own span, so an
+// allow on the enum does not reach it.
+#![allow(clippy::redundant_field_names)]
+
 use dioxus::document;
 use dioxus::prelude::*;
 

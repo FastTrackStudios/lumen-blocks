@@ -14,7 +14,7 @@ fn make_docs() {
     let mut out = generate_router_build_script(mdbook_dir);
     out.push_str("\nuse super::*;\n");
 
-    let filename = format!("router.rs");
+    let filename = "router.rs";
 
     // Don't try to trap this error - if the directory already exists, we don't care.
     // If the directory can't be created, then the `write` call afterwards will fail, and we'll

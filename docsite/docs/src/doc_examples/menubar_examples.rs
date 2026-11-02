@@ -13,7 +13,7 @@ pub mod basic {
 
     #[component]
     pub fn BasicMenubarExample() -> Element {
-        let mut last_action = use_signal(|| String::new());
+        let mut last_action = use_signal(String::new);
 
         let file_open = move |value: String| {
             last_action.set(format!("File menu selected: {}", value));
@@ -34,19 +34,19 @@ pub mod basic {
                             MenubarItem {
                                 index: 0_usize,
                                 value: "new".to_string(),
-                                on_select: Callback::new(file_open.clone()),
+                                on_select: Callback::new(file_open),
                                 "New"
                             }
                             MenubarItem {
                                 index: 1_usize,
                                 value: "open".to_string(),
-                                on_select: Callback::new(file_open.clone()),
+                                on_select: Callback::new(file_open),
                                 "Open"
                             }
                             MenubarItem {
                                 index: 2_usize,
                                 value: "save".to_string(),
-                                on_select: Callback::new(file_open.clone()),
+                                on_select: Callback::new(file_open),
                                 "Save"
                             }
                         }
@@ -59,19 +59,19 @@ pub mod basic {
                             MenubarItem {
                                 index: 0_usize,
                                 value: "cut".to_string(),
-                                on_select: Callback::new(edit_open.clone()),
+                                on_select: Callback::new(edit_open),
                                 "Cut"
                             }
                             MenubarItem {
                                 index: 1_usize,
                                 value: "copy".to_string(),
-                                on_select: Callback::new(edit_open.clone()),
+                                on_select: Callback::new(edit_open),
                                 "Copy"
                             }
                             MenubarItem {
                                 index: 2_usize,
                                 value: "paste".to_string(),
-                                on_select: Callback::new(edit_open.clone()),
+                                on_select: Callback::new(edit_open),
                                 "Paste"
                             }
                         }
@@ -100,7 +100,7 @@ pub mod disabled {
 
     #[component]
     pub fn DisabledMenubarExample() -> Element {
-        let mut last_action = use_signal(|| String::new());
+        let mut last_action = use_signal(String::new);
 
         let handle_select = move |value: String| {
             last_action.set(format!("Menu item selected: {}", value));
@@ -117,13 +117,13 @@ pub mod disabled {
                             MenubarItem {
                                 index: 0_usize,
                                 value: "item1".to_string(),
-                                on_select: Callback::new(handle_select.clone()),
+                                on_select: Callback::new(handle_select),
                                 "Item 1"
                             }
                             MenubarItem {
                                 index: 1_usize,
                                 value: "item2".to_string(),
-                                on_select: Callback::new(handle_select.clone()),
+                                on_select: Callback::new(handle_select),
                                 "Item 2"
                             }
                         }
@@ -139,7 +139,7 @@ pub mod disabled {
                             MenubarItem {
                                 index: 0_usize,
                                 value: "disabled1".to_string(),
-                                on_select: Callback::new(handle_select.clone()),
+                                on_select: Callback::new(handle_select),
                                 "Disabled Item 1"
                             }
                         }
@@ -152,13 +152,13 @@ pub mod disabled {
                             MenubarItem {
                                 index: 0_usize,
                                 value: "active".to_string(),
-                                on_select: Callback::new(handle_select.clone()),
+                                on_select: Callback::new(handle_select),
                                 "Active Item"
                             }
                             MenubarItem {
                                 index: 1_usize,
                                 value: "disabled".to_string(),
-                                on_select: Callback::new(handle_select.clone()),
+                                on_select: Callback::new(handle_select),
                                 class: Some("opacity-50 pointer-events-none".to_string()),
                                 "Disabled Item"
                             }
@@ -189,7 +189,7 @@ pub mod with_icons {
 
     #[component]
     pub fn MenubarWithIconsExample() -> Element {
-        let mut last_action = use_signal(|| String::new());
+        let mut last_action = use_signal(String::new);
 
         let file_open = move |value: String| {
             last_action.set(format!("File menu selected: {}", value));
@@ -210,7 +210,7 @@ pub mod with_icons {
                             MenubarItem {
                                 index: 0_usize,
                                 value: "new".to_string(),
-                                on_select: Callback::new(file_open.clone()),
+                                on_select: Callback::new(file_open),
                                 class: Some("flex items-center gap-2".to_string()),
                                 FileText { size: 16 }
                                 span { "New" }
@@ -218,7 +218,7 @@ pub mod with_icons {
                             MenubarItem {
                                 index: 1_usize,
                                 value: "open".to_string(),
-                                on_select: Callback::new(file_open.clone()),
+                                on_select: Callback::new(file_open),
                                 class: Some("flex items-center gap-2".to_string()),
                                 FolderOpen { size: 16 }
                                 span { "Open" }
@@ -226,7 +226,7 @@ pub mod with_icons {
                             MenubarItem {
                                 index: 2_usize,
                                 value: "save".to_string(),
-                                on_select: Callback::new(file_open.clone()),
+                                on_select: Callback::new(file_open),
                                 class: Some("flex items-center gap-2".to_string()),
                                 Save { size: 16 }
                                 span { "Save" }
@@ -241,7 +241,7 @@ pub mod with_icons {
                             MenubarItem {
                                 index: 0_usize,
                                 value: "cut".to_string(),
-                                on_select: Callback::new(edit_open.clone()),
+                                on_select: Callback::new(edit_open),
                                 class: Some("flex items-center gap-2".to_string()),
                                 Scissors { size: 16 }
                                 span { "Cut" }
@@ -249,7 +249,7 @@ pub mod with_icons {
                             MenubarItem {
                                 index: 1_usize,
                                 value: "copy".to_string(),
-                                on_select: Callback::new(edit_open.clone()),
+                                on_select: Callback::new(edit_open),
                                 class: Some("flex items-center gap-2".to_string()),
                                 Copy { size: 16 }
                                 span { "Copy" }
@@ -257,7 +257,7 @@ pub mod with_icons {
                             MenubarItem {
                                 index: 2_usize,
                                 value: "paste".to_string(),
-                                on_select: Callback::new(edit_open.clone()),
+                                on_select: Callback::new(edit_open),
                                 class: Some("flex items-center gap-2".to_string()),
                                 Clipboard { size: 16 }
                                 span { "Paste" }

@@ -4,15 +4,15 @@ members = ["blocks", "docsite"]
 
 [workspace.dependencies]
 lumen-blocks = { path = "blocks" }
-dioxus = { git = "https://github.com/DioxusLabs/dioxus", rev = "f717a8e184a522d078b70bb4b4d62a5f9a99ddfc" }
+dioxus = { git = "https://github.com/DioxusLabs/dioxus", rev = "430cfb563f1b70602ef387f0c80f171d84527b41" }
 use-mdbook = { git = "https://github.com/DioxusLabs/docsite.git", rev = "029a529a02f3fe3d0b24c143bc7722850986dbfa" }
 mdbook-shared = { git = "https://github.com/DioxusLabs/docsite.git", rev = "029a529a02f3fe3d0b24c143bc7722850986dbfa" }
 mdbook-gen = { git = "https://github.com/DioxusLabs/docsite.git", rev = "029a529a02f3fe3d0b24c143bc7722850986dbfa" }
 syn = "2.0.98"
 tracing = { version = "0.1", features = ["std"] }
 docs = { path = "./docsite/docs" }
-dioxus-sdk-time = { git = "https://github.com/FastTrackStudios/sdk", branch = "main" }
-lucide-dioxus = { git = "https://github.com/FastTrackStudios/lucide", branch = "main" }
+dioxus-sdk-time = { git = "https://github.com/FastTrackStudios/sdk", tag = "fts-upstream-2026-11" }
+lucide-dioxus = { git = "https://github.com/FastTrackStudios/lucide", tag = "fts-upstream-2026-11" }
 
 [profile]
 
@@ -25,3 +25,8 @@ inherits = "dev"
 
 [profile.android-dev]
 inherits = "dev"
+
+# The Dioxus crates from the FTS vendor fork, as architect v0.10.0 patches
+# them, so this crate builds and tests against what Task and Studio resolve.
+[patch."https://github.com/DioxusLabs/dioxus"]
+dioxus-vdom = { git = "https://github.com/FastTrackStudios/vendor", tag = "v0.7.0" }

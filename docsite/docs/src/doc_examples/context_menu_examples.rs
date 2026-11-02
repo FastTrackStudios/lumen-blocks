@@ -13,7 +13,7 @@ pub mod basic {
 
     #[component]
     pub fn BasicContextMenuExample() -> Element {
-        let mut selected_action = use_signal(|| String::new());
+        let mut selected_action = use_signal(String::new);
 
         rsx! {
             div { class: "space-y-4",
@@ -74,7 +74,7 @@ pub mod with_labels {
 
     #[component]
     pub fn ContextMenuWithLabelsExample() -> Element {
-        let mut selected_action = use_signal(|| String::new());
+        let mut selected_action = use_signal(String::new);
 
         rsx! {
             div { class: "space-y-4",
